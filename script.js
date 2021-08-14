@@ -178,12 +178,27 @@ play_again.addEventListener('click', (e) => {
 });
 
 
-alertBox = () => { // alertBox not fully done !!
-    console.log(alert_box)
-    alert_box.classList.add('show');
-    setTimeout(() => {
-        alert_box.classList.remove('show')
-    }, 2000)
+alertBox = () => {
+    if (!alert_box.classList.contains('show')) {
+        alert_box.classList.add('show');
+        console.log('alert box visible');
+        setTimeout(() => {
+            if (alert_box.classList.contains('show')) {
+                alert_box.classList.remove('show');
+                console.log('alert box invisible');
+            }
+        }, 2000);
+        // alert_box.addEventListener('transitionend', (e) => {
+        //     if (e.propertyName === 'transform') {
+        //         setTimeout(() => {
+        //             if (alert_box.classList.contains('show')) {
+        //                 alert_box.classList.remove('show');
+        //                 console.log('alert box invisible');
+        //             }
+        //         }, 2000);
+        //     }
+        // })
+    }
 }
 
 const isFinished = () => {
